@@ -1,2 +1,66 @@
-# dbQuery
-a simple tool to query postgresql include spatial data
+# 空间数据查询与导出工具
+
+## 功能描述
+
+本工具是一个基于 Python 和 Tkinter 的图形界面应用，用于连接 PostgreSQL 数据库，执行空间和属性条件查询，并将结果导出为 Excel 文件。
+
+## 环境要求
+
+- Python 3.13
+- PostgreSQL 12
+
+## 依赖安装
+
+运行以下命令安装依赖：
+
+```bash
+pip install psycopg2 pandas geopandas tkinter
+```
+
+如果安装 `geopandas` 时遇到问题，可以尝试先安装以下依赖：
+
+```bash
+pip install fiona shapely
+```
+
+## 运行步骤
+
+1. **克隆或下载代码**：
+   - 将代码保存到本地目录（如 `d:/python/dbquery`）。
+
+2. **启动应用**：
+   - 在终端中导航到代码目录，运行以下命令：
+     ```bash
+     python dbquery_app.py
+     ```
+
+3. **使用说明**：
+   - **数据库连接**：输入 PostgreSQL 数据库地址、schema、用户名和密码，点击“连接数据库”。
+   - **表列表**：连接成功后，界面会显示 schema 下的所有表。
+   - **属性过滤**：在输入框中填写 SQL 条件（如 `column_name = 'value'`）。
+   - **空间过滤**：点击“选择空间文件”上传 GeoJSON 或 Shapefile 文件。
+   - **查询与导出**：选择表后点击“执行查询”，结果会显示在界面中；点击“导出为Excel”保存结果。
+
+## 注意事项
+
+1. **数据库配置**：
+   - 确保 PostgreSQL 服务已启动。
+   - 确保用户有权限访问目标 schema。
+
+2. **空间文件**：
+   - 支持标准的 GeoJSON 或 Shapefile 格式。
+   - 文件路径中避免使用中文字符或特殊符号。
+
+3. **查询条件**：
+   - 属性过滤条件需符合 SQL 语法。
+   - 空间字段名称默认为 `geom`，如果不是，需修改代码中的字段名。
+
+## 问题排查
+
+- **数据库连接失败**：检查地址、用户名和密码是否正确。
+- **空间文件加载失败**：确保文件格式正确且路径无问题。
+- **导出失败**：检查是否有查询结果，以及文件保存路径是否有效。
+
+## 联系方式
+
+如有问题，请联系开发者或提交 Issue。
